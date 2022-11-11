@@ -14,7 +14,7 @@ public class Palavra {
 		Scanner sc = new Scanner(System.in);
 		HashMap<Integer, String> map = new HashMap<>();
 		Integer menuOpcaoPrincipal;
-		Integer id = 1;
+		Integer id = 0;
 		String palavra;
 		Integer keyGet;
 		PalavrasView pView = new PalavrasView();
@@ -26,7 +26,7 @@ public class Palavra {
 			if(menuOpcaoPrincipal == 1) {
 				Integer adcOutra;
 				do {
-					pView.menuPalavraOpcao1AdicionarPalavra();
+					pView.menuPalavraAdicionarPalavraOpcao1();
 					palavra = sc.next();
 
 					pView.mensagemDeSucesso();
@@ -40,14 +40,14 @@ public class Palavra {
 			}
 
 			else if(menuOpcaoPrincipal == 2) {
-				pView.menuPalavraOpcao2Listar();
+				pView.menuPalavraListarOpcao2(map);
 			}
 
 			else if(menuOpcaoPrincipal == 3) {
-				pView.menuPalavraOpcao3Alterar();
+				pView.menuPalavraAlterarOpcao3();
 				keyGet = sc.nextInt();
 
-				pView.mostraPalavraSelecionada();
+				pView.mostraPalavraSelecionada(map);
 
 				pView.mensagemCertezaAlterar();
 				Integer alterar = sc.nextInt();
@@ -62,20 +62,23 @@ public class Palavra {
 			}
 
 			else if(menuOpcaoPrincipal == 4) {
-				pView.menuPalavraOpcao4Remover();
+				pView.menuPalavraRemoverOpcao4();
 				keyGet = sc.nextInt();
 
-				pView.mostraPalavraSelecionada();
+				pView.mostraPalavraSelecionada(map);
 
 				pView.mensagemCertezaAlterar();
 				Integer remover = sc.nextInt();
 
 				if(remover == 1) {
-					pView.palavraRemovida();
+					pView.palavraRemovida(map);
 					map.remove(keyGet);
 				}
 			}
 
+			else {
+				pView.escolhaOpcaoValida();
+			}
 		} while(menuOpcaoPrincipal != 5);
 	}
 }
