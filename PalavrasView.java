@@ -15,6 +15,7 @@ public class PalavrasView {
 
 
 	public void menuPalavra() {
+		System.out.println("");
 		System.out.println("O QUE DESEJA FAZER");
 		System.out.println("1 - Inserir um novo produto");
 		System.out.println("2 - Listar produtos");
@@ -23,11 +24,11 @@ public class PalavrasView {
 		System.out.println("5 - encerrar");
 	}
 
-	public void menuPalavraOpcao1AdicionarPalavra() {
+	public void menuPalavraAdicionarPalavraOpcao1() {
 		System.out.println("digite a palavra que deseja adicionar:");
 	}
 
-	public void menuPalavraOpcao2Listar() {
+	public void menuPalavraListarOpcao2(HashMap<Integer, String> map)  {
 		System.out.println("==============");
 		for (Integer key : map.keySet()) {
 
@@ -38,7 +39,7 @@ public class PalavrasView {
 
 	}
 
-	public void menuPalavraOpcao3Alterar() {
+	public void menuPalavraAlterarOpcao3() {
 		System.out.println("Digite o Id da palavra que vc quer alterar");	
 	}
 
@@ -46,12 +47,12 @@ public class PalavrasView {
 		System.out.println("digite a nova palavra:");
 	}
 
-	public void mostraPalavraSelecionada() {
+	public void mostraPalavraSelecionada(HashMap<Integer, String> map) {
 		System.out.println(keyGet + " é a palavra: " + map.get(keyGet));
 		System.out.println("");
 	}
 
-	public void menuPalavraOpcao4Remover() {
+	public void menuPalavraRemoverOpcao4() {
 		System.out.println("Digite o Id da palavra que vc quer remover");
 	}
 
@@ -72,7 +73,11 @@ public class PalavrasView {
 		System.out.println("2 - nao");
 	}
 
-	public void palavraRemovida() {
+	public void palavraRemovida(HashMap<Integer, String> map) {
 		System.out.println("palavra " + map.get(keyGet) + " removida");
+	}
+
+	public void escolhaOpcaoValida() {
+		System.err.println("escolha uma opcao valida");
 	}
 }
