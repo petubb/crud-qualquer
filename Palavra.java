@@ -1,13 +1,13 @@
-package listaPalavras;
+package controller;
 
 
 import java.util.HashMap;
 import java.util.Scanner;
 
-import view.PalavrasView;
+import view.PalavraView;
 
 
-public class Palavra {
+public class PalavraController {
 
 	public static void main(String[] args) {
 
@@ -17,68 +17,65 @@ public class Palavra {
 		Integer id = 0;
 		String palavra;
 		Integer keyGet;
-		PalavrasView pView = new PalavrasView();
+		PalavraView palavraView = new PalavraView();
 
 		do {
-			pView.menuPalavra();
+			palavraView.menuPalavra();
 			menuOpcaoPrincipal = sc.nextInt();
 
 			if(menuOpcaoPrincipal == 1) {
 				Integer adcOutra;
 				do {
-					pView.menuPalavraAdicionarPalavraOpcao1();
+					palavraView.menuOpcao1AdicionarPalavra();
 					palavra = sc.next();
 
-					pView.mensagemDeSucesso();
+					palavraView.mensagemDeSucesso();
 					id++;
 					map.put(id, palavra);
 
-					pView.opcaoRepetirAcao();
+					palavraView.opcaoRepetirAcao();
 					adcOutra = sc.nextInt();
 
 				} while(adcOutra != 2);
 			}
 
 			else if(menuOpcaoPrincipal == 2) {
-				pView.menuPalavraListarOpcao2(map);
+				palavraView.menuOpcao2ListarPalavra(map);
 			}
 
 			else if(menuOpcaoPrincipal == 3) {
-				pView.menuPalavraAlterarOpcao3();
+				palavraView.menuOpcao2ListarPalavra(map);
+				palavraView.menuOpcao3AlterarPalavra();
 				keyGet = sc.nextInt();
 
-				pView.mostraPalavraSelecionada(map);
-
-				pView.mensagemCertezaAlterar();
+				palavraView.mensagemCerteza();
 				Integer alterar = sc.nextInt();
 
 				if(alterar == 1) {
-					pView.menuOpcao3AlterarPalavraDigitarNovaPalavra();
+					palavraView.menuOpcao3AlterarPalavraDigitarNovaPalavra();
 					String palavraNova = sc.next();
 
-					pView.mensagemDeSucesso();
+					palavraView.mensagemDeSucesso();
 					map.replace(keyGet, map.get(keyGet), palavraNova);
 				}
 			}
 
 			else if(menuOpcaoPrincipal == 4) {
-				pView.menuPalavraRemoverOpcao4();
+				palavraView.menuOpcao4RemoverPalavra();
 				keyGet = sc.nextInt();
 
-				pView.mostraPalavraSelecionada(map);
-
-				pView.mensagemCertezaAlterar();
+				palavraView.mensagemCerteza();
 				Integer remover = sc.nextInt();
 
 				if(remover == 1) {
-					pView.palavraRemovida(map);
+					palavraView.palavraRemovida(map);
 					map.remove(keyGet);
 				}
 			}
 
 			else {
-				pView.escolhaOpcaoValida();
+				palavraView.escolhaOpcaoValida();
 			}
-		} while(menuOpcaoPrincipal != 5);
+		} while(menuOpcaoPrincipal != 6);
 	}
 }
